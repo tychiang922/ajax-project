@@ -8,12 +8,42 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500&family=Lexend+Mega:wght@100;200;300;400;500;600&family=Lexend+Peta:wght@300;400;500;600&family=Lexend+Tera:wght@100;200;300;400&family=Lexend+Zetta:wght@100;200;300;400;500;600;700&family=Lora:wght@400;500&display=swap"
+    rel="stylesheet">
+  <script src="https://kit.fontawesome.com/f5e40114d0.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <header>
-  </header>
-  <main>
-  </main>
+  <div class="container-fluid">
+    <div class="home" data-view="home">
+      <p class="font-lexenddecca text-center motto">The simplest way to view your stocks</p>
+      <h1 class="font-lexendzetta text-center logo">fin<span class="font-lexendzetta blue-txt">V</span>iew</h1>
+      <div class="modal hidden">
+        <div class="modal-overlay pos-abs-modal">
+        </div>
+      </div>
+      <div class="z2 search-box">
+        <input class="search" type="text" name="search" placeholder="search by stock symbol">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <div class="search-results bk-white">
+          <ul>
+            <li class="search-li">
+              <div class="row">
+                <div class="col-1-fifth">
+                  <p>AA</p>
+                </div>
+                <div class="col-4-fifth">
+                  <p>Alcoa Corporation</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
