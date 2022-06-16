@@ -15,19 +15,22 @@ href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;
     rel="stylesheet">
   <script src="https://kit.fontawesome.com/f5e40114d0.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="bk-green">
   <div class="container">
     <div class="modal hidden">
       <div class="modal-overlay pos-abs-modal">
       </div>
     </div>
-    <div class="z2 search-box">
+    <div class="z2 search-element search-box">
       <input class="search" type="text" name="search" placeholder="search by stock symbol">
       <i class="fa-solid fa-magnifying-glass"></i>
     </div>
-    <div class="home" data-view="home">
+    <div id="home" class="view" data-view="home">
       <p class="font-lexenddecca text-center motto">The simplest way to view your stocks</p>
       <h1 class="font-lexendzetta text-center logo">fin<span class="font-lexendzetta blue-txt v-logo">V</span>iew</h1>
+    </div>
+    <div id="quote" class="view hidden" data-view="quote">
+
     </div>
   </div>
   <script src="lodash.js"></script>
