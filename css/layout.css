@@ -1,0 +1,19 @@
+.hidden {
+  display: none !important;
+}
+
+.container {
+  width: 100%;
+}
+
+.row {
+  display: flex;
+}
+
+.col-1-fifth {
+  flex-basis: calc(100%/5);
+}
+
+.col-4-fifth {
+  flex-basis: calc(400%/5);
+}
