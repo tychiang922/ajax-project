@@ -60,14 +60,14 @@ body {
 
 .search-box {
   position: relative;
-  bottom: 0;
+  top: 30rem;
   width: 20rem;
   margin: auto;
-  transition: bottom 0.75s ease-in-out;
+  transition: top 0.75s ease-in-out;
 }
 
 .search-box:focus-within {
-  bottom: 10rem;
+  top: 17rem;
 }
 
 .search {
