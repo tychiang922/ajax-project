@@ -6,7 +6,7 @@ function searchSubmit(event) {
     if ($search.value === '') {
       $modal.setAttribute('class', 'modal hidden');
       $search.blur();
-      return;
+
     }
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://api.twelvedata.com/quote?symbol=' + $search.value + '&apikey=' + apikey);
@@ -14,7 +14,9 @@ function searchSubmit(event) {
     xhr.addEventListener('load', function () {
     });
     xhr.send();
-    $search.blur();
+    if (event.key === 'Enter') {
+      $search.blur();
+    }
     $modal.setAttribute('class', 'modal hidden');
   }
 }
