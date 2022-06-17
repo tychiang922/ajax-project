@@ -3,26 +3,31 @@ var $modal = document.querySelector('.modal');
 var $search = document.querySelector('.search');
 var $searchElement = document.querySelector('.search-element');
 var $view = document.querySelectorAll('.view');
-function searchSubmit(event) {
-  if (event.key === 'Enter' || event.type === 'blur') {
-    if ($search.value === '') {
-      $modal.setAttribute('class', 'modal hidden');
-      $search.blur();
-      return;
-    }
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'https://api.twelvedata.com/quote?symbol=' + $search.value + '&apikey=' + apikey);
-    xhr.responseType = 'json';
-    xhr.addEventListener('load', function () {
-      data.currentSearch = xhr.response;
-    });
-    xhr.send();
-    if (event.key === 'Enter') {
-      $search.blur();
-    }
-    data.view = 'quote';
-    viewCheck();
+function searchAction() {
+  if ($search.value === '') {
     $modal.setAttribute('class', 'modal hidden');
+    $search.blur();
+    return;
+  }
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://api.twelvedata.com/quote?symbol=' + $search.value + '&apikey=' + apikey);
+  xhr.responseType = 'json';
+  xhr.addEventListener('load', function () {
+    data.currentSearch = xhr.response;
+  });
+  xhr.send();
+  data.view = 'quote';
+  viewCheck();
+  $modal.setAttribute('class', 'modal hidden');
+}
+
+function searchSubmit(event) {
+  if (event.key === 'Enter') {
+    searchAction();
+    $search.blur();
+  }
+  if (event.type === 'blur') {
+    searchAction();
   }
 }
 
