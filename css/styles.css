@@ -7,8 +7,8 @@
     linear-gradient(
       to bottom,
       #7ec9c9 0%,
-      #7ec9c9 50%,
-      #689cc3 50%,
+      #7ec9c9 42%,
+      #689cc3 42%,
       #689cc3 100%
     );
 }
@@ -31,6 +31,7 @@
 
 .justify-center {
   justify-content: center;
+  margin: auto;
 }
 
 .text-center {
@@ -39,7 +40,8 @@
 
 .align-center {
   align-items: center;
-  margin: auto;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .logo {
@@ -180,6 +182,138 @@ input {
 
 .search-li {
   padding: 1rem 0 1rem 0.75rem;
+}
+
+.folder {
+  width: 100%;
+}
+
+.fa-folder-open {
+  font-size: 3rem;
+}
+
+#quote {
+  padding-top: 3.5rem;
+}
+
+.font-lexendpeta {
+  font-family: "Lexend Peta", monospace;
+}
+
+.fontsize-14px {
+  font-size: 14px;
+}
+
+.fontsize-20px {
+  font-size: 20px;
+}
+
+.font-lexendtera {
+  font-family: "Lexend Tera", monospace;
+}
+
+.fontsize-24px {
+  font-size: 24px;
+}
+
+.mlr-1r-p5r {
+  margin-left: 0.5rem;
+  margin-right: 1.5rem;
+}
+
+.mlr-p5r-1 {
+  margin-left: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.ml-1r {
+  margin-left: 1rem;
+}
+
+.mr-1r {
+  margin-right: 1rem;
+}
+
+.pt-3r {
+  padding-top: 2rem;
+}
+
+.pt {
+  padding-top: 2rem;
+}
+
+.pb-p5r {
+  padding-bottom: 0.5rem;
+}
+
+.graph-placeholder {
+  margin: 1rem auto auto;
+  width: 350px;
+  height: 225px;
+  background-color: white;
+}
+
+.quote-data-box {
+  margin-top: 0.5rem;
+  color: white;
+}
+
+.quote-data {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.font-lora {
+  font-family: Lora, monospace;
+  font-weight: 100;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.fontsize-15px {
+  font-size: 15px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.font-white {
+  color: white;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.txt-green {
+  color: #317e16;
+}
+
+.txt-red {
+  color: #ae0000;
+}
+
+.mtb-1r {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.mtb-2r {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.mr-2r {
+  margin-right: 2rem;
 }
 
 @media screen and (min-width: 414px) {

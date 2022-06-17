@@ -11,26 +11,139 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500&family=Lexend+Mega:wght@100;200;300;400;500;600&family=Lexend+Peta:wght@300;400;500;600&family=Lexend+Tera:wght@100;200;300;400&family=Lexend+Zetta:wght@100;200;300;400;500;600;700&family=Lora:wght@400;500&display=swap"
+href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500&family=Lexend+Mega:wght@100;200;300;400;500;600&family=Lexend+Peta:wght@300;400;500;600&family=Lexend+Tera:wght@100;200;300;400&family=Lexend+Zetta:wght@100;200;300;400;500;600;700&family=Lora:wght@100;200;300;400;500&display=swap"
     rel="stylesheet">
   <script src="https://kit.fontawesome.com/f5e40114d0.js" crossorigin="anonymous"></script>
 </head>
-<body class="bk-green">
+<body class="bk-bluegreen">
   <div class="container">
     <div class="modal hidden">
       <div class="modal-overlay pos-abs-modal">
       </div>
     </div>
-    <div class="z2 search-element search-box">
+    <div class="z2 search-element search-box-quote">
       <input class="search" type="text" name="search" placeholder="search by stock symbol">
       <i class="fa-solid fa-magnifying-glass"></i>
     </div>
-    <div id="home" class="view" data-view="home">
+    <div id="home" class="view hidden" data-view="home">
       <p class="font-lexenddecca text-center motto">The simplest way to view your stocks</p>
       <h1 class="font-lexendzetta text-center logo">fin<span class="font-lexendzetta blue-txt v-logo">V</span>iew</h1>
     </div>
-    <div id="quote" class="view hidden" data-view="quote">
-
+    <div id="quote" class="view" data-view="quote">
+      <div class="row justify-center">
+        <i class="fa-solid fa-folder-open"></i>
+      </div>
+      <div class="row pt-3r">
+        <div class="col-2 mlr-1r-p5r">
+          <p class="text-center font-lexendpeta fontsize-14px pb-p5r">Close</p>
+          <p id="close" class="text-center font-lexendtera fontsize-24px pb-p5r">137.13</p>
+          <div class="row gain-loss-color txt-red">
+            <div class="col-2 ml-1r">
+              <p id="change" class="text-center font-lexendtera fontsize-14px">-5.51</p>
+            </div>
+            <div class="col-2 mr-1r">
+              <p id="percent-change" class="text-center font-lexendtera fontsize-14px">(-3.86%)</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-2 mlr-p5r-1">
+          <p class="text-center font-lexendpeta fontsize-14px pb-p5r">After Hours</p>
+          <p id="extended-price" class="text-center font-lexendtera fontsize-24px pb-p5r">137.38</p>
+          <div class="row gain-loss-color txt-green">
+            <div class="col-2 ml-1r">
+              <p id="extended-change" class="text-center font-lexendtera fontsize-14px">+0.25</p>
+            </div>
+            <div class="col-2 mr-1r">
+              <p id="extended-percent" class="text-center font-lexendtera fontsize-14px">(-0.18%)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="text-center font-lexendtera fontsize-20px pt">AAPL (Apple Inc)</p>
+      <div class="row">
+        <img class="graph-placeholder justify-center" src="https://quickchart.io/chart?c={type:'bar',data:{labels:[2012,2013,2014,2015,2016],datasets:[{label:'Users',data:[120,60,50,180,120]}]}}" alt="graph">
+      </div>
+      <div class="row wrap quote-data-box font-lora fontsize-15px">
+        <div class="col-2 quote-data">
+          <div class="row space-between">
+            <p>Open:</p>
+            <p id="open" class="bold align-center">148.44</p>
+          </div>
+        </div>
+        <div class="col-2 quote-data">
+          <div class="row space-between">
+            <p>Close:</p>
+            <p id="closeList" class="bold align-center">148.85</p>
+          </div>
+        </div>
+        <div class="col-2 quote-data">
+          <div class="row space-between">
+            <p>Low:</p>
+            <p id="low" class="bold align-center">147.22</p>
+          </div>
+        </div>
+        <div class="col-2 quote-data">
+          <div class="row space-between">
+            <p>High:</p>
+            <p id="high" class="bold align-center">148.96</p>
+          </div>
+        </div>
+        <div class="col-2 quote-data">
+          <div class="row space-between">
+            <p class="align-center">Volume:</p>
+            <p id="volume" class="bold align-center">67903927</p>
+          </div>
+        </div>
+        <div class="col-2 quote-data">
+          <div class="row space-between">
+            <p>Avg Volume:</p>
+            <p id="avg-volume" class="bold align-center">83571571</p>
+          </div>
+        </div>
+      </div>
+      <p class="lora text-center font-white text-underline mtb-2r">52 Week Comparison</p>
+      <div class="row font-white lora justify-center mtb-2r">
+        <p class="mr-2r">Range&colon;</p>
+        <p id="range" class="bold">103.10 ~ 157.26</p>
+      </div>
+      <div class="row wrap quote-data-box font-lora fontsize-15px">
+        <div class="col-2 quote-data">
+          <div class="row space-between">
+            <p>Low:</p>
+            <p id="year-low" class="bold align-center">148.44</p>
+          </div>
+        </div>
+        <div class="col-2 quote-data">
+          <div class="row space-between">
+            <p>High:</p>
+            <p id="year-high" class="bold align-center">148.85</p>
+          </div>
+        </div>
+        <div class="col-2 quote-data">
+          <div class="row space-between">
+            <p>Low Change:</p>
+            <p id="year-low-change" class="bold align-center">147.22</p>
+          </div>
+        </div>
+        <div class="col-2 quote-data">
+          <div class="row space-between">
+            <p>High Change:</p>
+            <p id="year-high-change" class="bold align-center">148.96</p>
+          </div>
+        </div>
+        <div class="col-2 quote-data">
+          <div class="row space-between">
+            <p class="align-center">&percnt; Low Change&colon;</p>
+            <p id="year-perc-low-change" class="bold align-center">67903927</p>
+          </div>
+        </div>
+        <div class="col-2 quote-data">
+          <div class="row space-between">
+            <p>&percnt; High Change&colon;</p>
+            <p id="year-perc-high-change" class="bold align-center">83571571</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <script src="lodash.js"></script>

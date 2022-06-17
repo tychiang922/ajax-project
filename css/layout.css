@@ -3,7 +3,8 @@
 }
 
 .container {
-  width: 100%;
+  width: 400px;
+  margin: auto;
 }
 
 .row {
@@ -16,4 +17,12 @@
 
 .col-4-fifth {
   flex-basis: calc(400%/5);
+}
+
+.col-2 {
+  flex-basis: 50%;
+}
+
+.wrap {
+  flex-wrap: wrap;
 }
