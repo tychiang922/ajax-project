@@ -19,6 +19,7 @@ function searchAction() {
   data.view = 'quote';
   viewCheck();
   $modal.setAttribute('class', 'modal hidden');
+  $search.value = '';
 }
 
 function searchSubmit(event) {
@@ -27,6 +28,10 @@ function searchSubmit(event) {
     $search.blur();
   }
   if (event.type === 'blur') {
+    if (data.view !== 'home') {
+      $modal.setAttribute('class', 'modal hidden');
+      return;
+    }
     searchAction();
   }
 }
