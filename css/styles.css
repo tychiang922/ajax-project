@@ -256,6 +256,7 @@ input {
 .quote-data-box {
   margin-top: 0.5rem;
   color: white;
+  font-size: 15px;
 }
 
 .quote-data {
@@ -263,6 +264,7 @@ input {
   margin-bottom: 1rem;
   padding-left: 2rem;
   padding-right: 2rem;
+  font-family: Lora, monospace;
 }
 
 .font-lora {
@@ -316,7 +318,58 @@ input {
   margin-right: 2rem;
 }
 
-@media screen and (min-width: 414px) {
+.pb-2r {
+  padding-bottom: 2rem;
+}
+
+.head-title {
+  font-size: 14px;
+  padding-bottom: 0.5rem;
+}
+
+.head-number {
+  font-size: 24px;
+  padding-bottom: 0.5rem;
+}
+
+.head-change {
+  font-size: 14px;
+}
+
+.title {
+  font-size: 20px;
+  text-align: center;
+}
+
+.recent-search {
+  display: flex;
+  background-color: #689cc3;
+  width: 15rem;
+  margin: auto;
+  height: 3rem;
+  align-items: center;
+}
+
+.recent-search-text {
+  width: 100%;
+  text-align: center;
+  font-family: "Lexend Peta", monospace;
+}
+
+#recent-search {
+  font-family: "Lexend Tera", monospace;
+  font-size: 18px;
+  margin: auto;
+  background-color: white;
+  width: 13rem;
+}
+
+.recent-search-li {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+@media screen and (min-width: 600px) {
   .logo {
     font-size: 64px;
   }
@@ -327,5 +380,57 @@ input {
 
   .search-box:focus-within {
     bottom: 12rem;
+  }
+
+  .quote-container {
+    width: 70%;
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  .quote-container-screen {
+    width: 30%;
+  }
+
+  .folder {
+    display: none;
+  }
+
+  .graph-placeholder {
+    height: 400px;
+    width: 700px;
+  }
+
+  .quote-data-box {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    font-size: 16px;
+  }
+
+  .range {
+    font-size: 16px;
+  }
+
+  .title {
+    font-size: 30px;
+    text-align: left;
+    padding-left: 4rem;
+  }
+
+  .head-title {
+    font-size: 20px;
+  }
+
+  .head-number {
+    font-size: 36px;
+  }
+
+  .head-change {
+    font-size: 16px;
+  }
+
+  .screen-change {
+    text-align: center;
+    margin: auto;
   }
 }

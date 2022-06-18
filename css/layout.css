@@ -23,6 +23,37 @@
   flex-basis: 50%;
 }
 
+.row-perc {
+  flex-basis: flex;
+}
+
 .wrap {
   flex-wrap: wrap;
+}
+
+@media screen and (min-width: 600px) {
+  .container {
+    width: 1200px;
+  }
+
+  .screen-row {
+    display: flex;
+    justify-content: center;
+    margin-left: 2rem;
+  }
+
+  .screen-col {
+    flex-basis: 100%;
+    margin-left: 0;
+    margin-right: 5.5rem;
+    margin-top: 1.25rem;
+  }
+
+  .screen-col-2 {
+    flex-basis: 50%;
+  }
+
+  .screen-inline {
+    display: inline;
+  }
 }
