@@ -396,9 +396,28 @@ input {
     display: none;
   }
 
+  .graph-row {
+    margin: auto;
+    width: 700px;
+  }
+
   .graph-placeholder {
     height: 400px;
     width: 700px;
+    margin-top: 0;
+  }
+
+  .graph {
+    position: relative;
+    margin-top: 1rem;
+  }
+
+  .graph-title {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    font-size: 18px;
+    font-weight: bold;
   }
 
   .quote-data-box {
