@@ -11,6 +11,7 @@ var dateMonth = fullDate.getMonth() + 1;
 data.currentDate = dateYear + '-' + dateMonth + '-' + dateDay;
 
 function searchAction() {
+  data.currentSearch = {};
   if ($search.value === '') {
     $modal.setAttribute('class', 'modal hidden');
     $search.blur();
@@ -19,10 +20,54 @@ function searchAction() {
   xhrQuoteRequest();
   xhrAfterHourRequest();
   xhrStockTime();
+  displayRecentSearch();
   data.view = 'quote';
   viewCheck();
   $modal.setAttribute('class', 'modal hidden');
   $search.value = '';
+}
+
+function displayRecentSearch() {
+  var $recentSearch = document.querySelector('#recent-search');
+  var $liAll = document.querySelectorAll('.recent-search-li');
+  if ($liAll.length > 0) {
+    for (var liIndex = 0; liIndex < $liAll.length; liIndex++) {
+      $liAll[liIndex].remove();
+    }
+  }
+  if (data.lastFiveSearch.length > 0) {
+    for (var curIndex = 0; curIndex < data.lastFiveSearch.length; curIndex++) {
+      var li = recentSearchLiGenerator(data.lastFiveSearch[curIndex]);
+      $recentSearch.append(li);
+    }
+  }
+}
+
+function recentSearchLiGenerator(array) {
+  var $recentSearchLi = document.createElement('li');
+  $recentSearchLi.setAttribute('class', 'recent-search-li');
+  var $row = document.createElement('div');
+  $row.setAttribute('class', 'row');
+  var $col2 = document.createElement('div');
+  $col2.setAttribute('class', 'col-2');
+  var $col22 = document.createElement('div');
+  $col22.setAttribute('class', 'col-2');
+  var $symbolP = document.createElement('p');
+  $symbolP.setAttribute('class', 'text-center');
+  $symbolP.textContent = array.symbol;
+  var $valueP = document.createElement('p');
+  $valueP.textContent = Number(array.close).toFixed(2);
+  if (Number(array.change) < 0) {
+    $valueP.setAttribute('class', 'text-center txt-red');
+  } else {
+    $valueP.setAttribute('class', 'text-center txt-green');
+  }
+  $col2.appendChild($symbolP);
+  $col22.appendChild($valueP);
+  $row.appendChild($col2);
+  $row.appendChild($col22);
+  $recentSearchLi.appendChild($row);
+  return $recentSearchLi;
 }
 
 function xhrQuoteRequest() {
@@ -30,8 +75,11 @@ function xhrQuoteRequest() {
   xhr.open('GET', 'https://api.twelvedata.com/quote?symbol=' + $search.value + '&apikey=' + apikey);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    data.currentSearch = xhr.response;
+    for (var key in xhr.response) {
+      data.currentSearch[key] = xhr.response[key];
+    }
     quoteCreation();
+    data.lastFiveSearch.unshift(data.currentSearch);
   });
   xhr.send();
 }
@@ -41,7 +89,7 @@ function xhrAfterHourRequest() {
   xhrAfter.open('GET', 'https://api.twelvedata.com/price?symbol=' + $search.value + '&apikey=' + apikey);
   xhrAfter.responseType = 'json';
   xhrAfter.addEventListener('load', function () {
-    data.currentSearchAfter = Number(xhrAfter.response.price);
+    data.currentSearch.afterHour = Number(xhrAfter.response.price).toFixed(2);
     quoteAfterCreation();
   });
   xhrAfter.send();
@@ -49,7 +97,6 @@ function xhrAfterHourRequest() {
 
 function xhrStockTime() {
   var xhrStockTime = new XMLHttpRequest();
-  // date = 2022-06-22
   xhrStockTime.open('GET', 'https://api.twelvedata.com/time_series?start_date=' + data.currentDate + '&symbol=' + $search.value + '&interval=1min&apikey=' + apikey);
   xhrStockTime.responseType = 'json';
   xhrStockTime.addEventListener('load', function () {
@@ -156,8 +203,8 @@ function quoteAfterCreation() {
   var $extendedChange = document.querySelector('#extended-change');
   var closeNumber = Number(data.currentSearch.close);
   var $extendedPercent = document.querySelector('#extended-percent');
-  $extendedPrice.textContent = data.currentSearchAfter;
-  var extendedChange = (data.currentSearchAfter - closeNumber).toFixed(2);
+  $extendedPrice.textContent = data.currentSearch.afterHour;
+  var extendedChange = (data.currentSearch.afterHour - closeNumber).toFixed(2);
   var extendedPercent = ((extendedChange / closeNumber) * 100).toFixed(2);
   var $afterColor = document.querySelector('.after-color');
   if (extendedChange > 0) {

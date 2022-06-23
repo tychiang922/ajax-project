@@ -410,6 +410,7 @@ input {
   .graph {
     position: relative;
     margin-top: 1rem;
+    z-index: -1;
   }
 
   .graph-title {
