@@ -4,6 +4,11 @@ var $search = document.querySelector('.search');
 var $searchElement = document.querySelector('.search-element');
 var $view = document.querySelectorAll('.view');
 var $closeColor = document.querySelector('.close-color');
+var fullDate = new Date();
+var dateDay = fullDate.getDate();
+var dateYear = fullDate.getFullYear();
+var dateMonth = fullDate.getMonth() + 1;
+data.currentDate = dateYear + '-' + dateMonth + '-' + dateDay;
 
 function searchAction() {
   if ($search.value === '') {
@@ -11,26 +16,51 @@ function searchAction() {
     $search.blur();
     return;
   }
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://api.twelvedata.com/quote?symbol=' + $search.value + '&apikey=' + apikey);
-  xhr.responseType = 'json';
-  var xhrAfter = new XMLHttpRequest();
-  xhrAfter.open('GET', 'https://api.twelvedata.com/price?symbol=' + $search.value + '&apikey=' + apikey);
-  xhrAfter.responseType = 'json';
-  xhr.addEventListener('load', function () {
-    data.currentSearch = xhr.response;
-    quoteCreation();
-    xhrAfter.addEventListener('load', function () {
-      data.currentSearchAfter = Number(xhrAfter.response.price).toFixed(2);
-      quoteAfterCreation();
-    });
-  });
-  xhr.send();
-  xhrAfter.send();
+  xhrQuoteRequest();
+  xhrAfterHourRequest();
+  xhrStockTime();
   data.view = 'quote';
   viewCheck();
   $modal.setAttribute('class', 'modal hidden');
   $search.value = '';
+}
+
+function xhrQuoteRequest() {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://api.twelvedata.com/quote?symbol=' + $search.value + '&apikey=' + apikey);
+  xhr.responseType = 'json';
+  xhr.addEventListener('load', function () {
+    data.currentSearch = xhr.response;
+    quoteCreation();
+  });
+  xhr.send();
+}
+
+function xhrAfterHourRequest() {
+  var xhrAfter = new XMLHttpRequest();
+  xhrAfter.open('GET', 'https://api.twelvedata.com/price?symbol=' + $search.value + '&apikey=' + apikey);
+  xhrAfter.responseType = 'json';
+  xhrAfter.addEventListener('load', function () {
+    data.currentSearchAfter = Number(xhrAfter.response.price);
+    quoteAfterCreation();
+  });
+  xhrAfter.send();
+}
+
+function xhrStockTime() {
+  var xhrStockTime = new XMLHttpRequest();
+  // date = 2022-06-22
+  xhrStockTime.open('GET', 'https://api.twelvedata.com/time_series?start_date=' + data.currentDate + '&symbol=' + $search.value + '&interval=1min&apikey=' + apikey);
+  xhrStockTime.responseType = 'json';
+  xhrStockTime.addEventListener('load', function () {
+    data.currentSearch.dayOneInterval = [];
+    for (var stockIndex = xhrStockTime.response.values.length - 1; stockIndex >= 0; stockIndex--) {
+      data.currentSearch.dayOneInterval.push(xhrStockTime.response.values[stockIndex].close);
+    }
+    var $graphPlaceHolder = document.querySelector('.graph-placeholder');
+    $graphPlaceHolder.setAttribute('src', "https://quickchart.io/chart?c={type:'sparkline',data:{datasets:[{data:[" + data.currentSearch.dayOneInterval + ']}]}}');
+  });
+  xhrStockTime.send();
 }
 
 function searchSubmit(event) {
