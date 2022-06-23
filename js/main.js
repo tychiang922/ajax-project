@@ -196,14 +196,8 @@ function quoteCreation() {
   $yearHighChange.textContent = numberToFixedTwo(data.currentSearch.fifty_two_week.high_change);
   $yearPercLowChange.textContent = numberToFixedTwo(data.currentSearch.fifty_two_week.low_change_percent);
   $yearPercHighChange.textContent = numberToFixedTwo(data.currentSearch.fifty_two_week.high_change_percent);
-}
-
-function quoteAfterCreation() {
-  var $extendedPrice = document.querySelector('#extended-price');
   var $extendedChange = document.querySelector('#extended-change');
-  var closeNumber = Number(data.currentSearch.close);
   var $extendedPercent = document.querySelector('#extended-percent');
-  $extendedPrice.textContent = data.currentSearch.afterHour;
   var extendedChange = (data.currentSearch.afterHour - closeNumber).toFixed(2);
   var extendedPercent = ((extendedChange / closeNumber) * 100).toFixed(2);
   var $afterColor = document.querySelector('.after-color');
@@ -216,4 +210,9 @@ function quoteAfterCreation() {
     $extendedPercent.textContent = '(' + extendedPercent + '%' + ')';
     $afterColor.setAttribute('class', 'row after-color txt-red head-change screen-inline');
   }
+}
+
+function quoteAfterCreation() {
+  var $extendedPrice = document.querySelector('#extended-price');
+  $extendedPrice.textContent = data.currentSearch.afterHour;
 }

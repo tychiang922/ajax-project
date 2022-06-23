@@ -247,10 +247,24 @@ input {
 }
 
 .graph-placeholder {
-  margin: 1rem auto auto;
+  margin: 0 auto auto;
   width: 350px;
   height: 225px;
   background-color: white;
+}
+
+.graph {
+  position: relative;
+  margin-top: 1rem;
+  z-index: -1;
+}
+
+.graph-title {
+  position: absolute;
+  top: 0;
+  right: 1rem;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .quote-data-box {
@@ -369,6 +383,10 @@ input {
   padding-bottom: 1rem;
 }
 
+.quote-container-screen {
+  display: none;
+}
+
 @media screen and (min-width: 600px) {
   .logo {
     font-size: 64px;
@@ -390,6 +408,7 @@ input {
 
   .quote-container-screen {
     width: 30%;
+    display: block;
   }
 
   .folder {
@@ -409,7 +428,7 @@ input {
 
   .graph {
     position: relative;
-    margin-top: 1rem;
+    margin-top: 1rem auto 0;
     z-index: -1;
   }
 
