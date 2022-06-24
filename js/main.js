@@ -41,6 +41,7 @@ function searchAction() {
 function displayRecentSearch() {
   var $recentSearch = document.querySelector('#recent-search');
   var $liAll = document.querySelectorAll('.recent-search-li');
+  var $recentSearchFolder = document.querySelector('#recent-search-folder');
   if ($liAll.length > 0) {
     for (var liIndex = 0; liIndex < $liAll.length; liIndex++) {
       $liAll[liIndex].remove();
@@ -50,6 +51,8 @@ function displayRecentSearch() {
     for (var curIndex = 0; curIndex < data.lastFiveSearch.length; curIndex++) {
       var li = recentSearchLiGenerator(data.lastFiveSearch[curIndex]);
       $recentSearch.append(li);
+      var li2 = recentSearchLiGenerator(data.lastFiveSearch[curIndex]);
+      $recentSearchFolder.append(li2);
     }
   }
 }
