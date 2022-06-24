@@ -3,7 +3,8 @@
 }
 
 .container {
-  width: 100%;
+  width: 400px;
+  margin: auto;
 }
 
 .row {
@@ -16,4 +17,47 @@
 
 .col-4-fifth {
   flex-basis: calc(400%/5);
+}
+
+.col-2 {
+  flex-basis: 50%;
+}
+
+.row-perc {
+  flex-basis: flex;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.z0 {
+  z-index: 0;
+}
+
+@media screen and (min-width: 600px) {
+  .container {
+    width: 1200px;
+  }
+
+  .screen-row {
+    display: flex;
+    justify-content: center;
+    margin-left: 2rem;
+  }
+
+  .screen-col {
+    flex-basis: 100%;
+    margin-left: 0;
+    margin-right: 5.5rem;
+    margin-top: 1.25rem;
+  }
+
+  .screen-col-2 {
+    flex-basis: 50%;
+  }
+
+  .screen-inline {
+    display: inline;
+  }
 }

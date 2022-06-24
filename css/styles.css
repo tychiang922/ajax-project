@@ -1,5 +1,16 @@
-body {
+.bk-green {
   background-color: #7ec9c9;
+}
+
+.bk-bluegreen {
+  background:
+    linear-gradient(
+      to bottom,
+      #7ec9c9 0%,
+      #7ec9c9 42%,
+      #689cc3 42%,
+      #689cc3 100%
+    );
 }
 
 .font-lexendzetta {
@@ -14,12 +25,13 @@ body {
   font-family: "Lexend Mega", monospace;
 }
 
-.home {
+#home {
   margin-top: 27vh;
 }
 
 .justify-center {
   justify-content: center;
+  margin: auto;
 }
 
 .text-center {
@@ -28,7 +40,8 @@ body {
 
 .align-center {
   align-items: center;
-  margin: auto;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .logo {
@@ -60,7 +73,7 @@ body {
 
 .search-box {
   position: relative;
-  top: 30rem;
+  top: 29rem;
   width: 20rem;
   margin: auto;
   transition: top 0.75s ease-in-out;
@@ -110,6 +123,18 @@ body {
   opacity: 0;
 }
 
+.search-box-quote {
+  position: relative;
+  top: 2rem;
+  width: 20rem;
+  margin: auto;
+  transition: top 0.75s ease-in-out;
+}
+
+.search-box-quote:focus-within {
+  top: 17rem;
+}
+
 input {
   outline: none;
 }
@@ -118,24 +143,34 @@ input {
   position: relative;
 }
 
-.pos-abs-modal {
+.recent-folder {
   position: absolute;
-  top: 0;
+  left: 0;
   right: 0;
+  top: 40%;
+}
+
+#recent-search-folder {
+  font-family:
+    "Lexend Tera",
+    monospace;
+  font-size: 18px;
+  margin: auto;
+  background-color: white;
+  width: 13rem;
+}
+
+.pos-abs-modal {
+  position: fixed;
+  top: 0;
   bottom: 0;
   left: 0;
+  right: 0;
 }
 
 .modal-overlay {
   background: black;
   opacity: 0.7;
-}
-
-.modal-box-pos {
-  position: absolute;
-  top: 10vh;
-  width: 100%;
-  height: 150px;
 }
 
 .z1 {
@@ -159,7 +194,210 @@ input {
   padding: 1rem 0 1rem 0.75rem;
 }
 
-@media screen and (min-width: 414px) {
+.folder {
+  width: 100%;
+}
+
+.fa-folder-open {
+  font-size: 3rem;
+}
+
+#quote {
+  padding-top: 3.5rem;
+}
+
+.font-lexendpeta {
+  font-family: "Lexend Peta", monospace;
+}
+
+.fontsize-14px {
+  font-size: 14px;
+}
+
+.fontsize-20px {
+  font-size: 20px;
+}
+
+.font-lexendtera {
+  font-family: "Lexend Tera", monospace;
+}
+
+.fontsize-24px {
+  font-size: 24px;
+}
+
+.mlr-1r-p5r {
+  margin-left: 0.5rem;
+  margin-right: 1.5rem;
+}
+
+.mlr-p5r-1 {
+  margin-left: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.ml-1r {
+  margin-left: 1rem;
+}
+
+.mr-1r {
+  margin-right: 1rem;
+}
+
+.pt-3r {
+  padding-top: 2rem;
+}
+
+.pt {
+  padding-top: 2rem;
+}
+
+.pb-p5r {
+  padding-bottom: 0.5rem;
+}
+
+.graph-placeholder {
+  margin: 0 auto auto;
+  width: 350px;
+  height: 225px;
+  background-color: white;
+}
+
+.graph {
+  position: relative;
+  margin-top: 1rem;
+  z-index: -1;
+}
+
+.graph-title {
+  position: absolute;
+  top: 0;
+  right: 1rem;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.quote-data-box {
+  margin-top: 0.5rem;
+  color: white;
+  font-size: 15px;
+}
+
+.quote-data {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  font-family: Lora, monospace;
+}
+
+.font-lora {
+  font-family: Lora, monospace;
+  font-weight: 100;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.fontsize-15px {
+  font-size: 15px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.font-white {
+  color: white;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.txt-green {
+  color: #317e16;
+}
+
+.txt-red {
+  color: #ae0000;
+}
+
+.mtb-1r {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.mtb-2r {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.mr-2r {
+  margin-right: 2rem;
+}
+
+.pb-2r {
+  padding-bottom: 2rem;
+}
+
+.head-title {
+  font-size: 14px;
+  padding-bottom: 0.5rem;
+}
+
+.head-number {
+  font-size: 24px;
+  padding-bottom: 0.5rem;
+}
+
+.head-change {
+  font-size: 14px;
+}
+
+.title {
+  font-size: 20px;
+  text-align: center;
+}
+
+.recent-search {
+  display: flex;
+  background-color: #689cc3;
+  width: 20rem;
+  margin: auto;
+  height: 3rem;
+  align-items: center;
+}
+
+.recent-search-text {
+  width: 100%;
+  text-align: center;
+  font-family: "Lexend Peta", monospace;
+}
+
+#recent-search {
+  font-family: "Lexend Tera", monospace;
+  font-size: 18px;
+  margin: auto;
+  background-color: white;
+  width: 13rem;
+}
+
+.recent-search-li {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.quote-container-screen {
+  display: none;
+}
+
+@media screen and (min-width: 600px) {
   .logo {
     font-size: 64px;
   }
@@ -170,5 +408,82 @@ input {
 
   .search-box:focus-within {
     bottom: 12rem;
+  }
+
+  .quote-container {
+    width: 70%;
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  .quote-container-screen {
+    width: 30%;
+    display: block;
+  }
+
+  .folder {
+    display: none;
+  }
+
+  .graph-row {
+    margin: auto;
+    width: 700px;
+  }
+
+  .graph-placeholder {
+    height: 400px;
+    width: 700px;
+    margin-top: 0;
+  }
+
+  .graph {
+    position: relative;
+    margin-top: 1rem auto 0;
+    z-index: -1;
+  }
+
+  .graph-title {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .quote-data-box {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    font-size: 16px;
+  }
+
+  .range {
+    font-size: 16px;
+  }
+
+  .title {
+    font-size: 30px;
+    text-align: left;
+    padding-left: 4rem;
+  }
+
+  .head-title {
+    font-size: 20px;
+  }
+
+  .head-number {
+    font-size: 36px;
+  }
+
+  .head-change {
+    font-size: 16px;
+  }
+
+  .screen-change {
+    text-align: center;
+    margin: auto;
+  }
+
+  .recent-search {
+    width: 15rem;
   }
 }

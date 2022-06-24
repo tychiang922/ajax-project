@@ -11,26 +11,182 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500&family=Lexend+Mega:wght@100;200;300;400;500;600&family=Lexend+Peta:wght@300;400;500;600&family=Lexend+Tera:wght@100;200;300;400&family=Lexend+Zetta:wght@100;200;300;400;500;600;700&family=Lora:wght@400;500&display=swap"
+href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500&family=Lexend+Mega:wght@100;200;300;400;500;600&family=Lexend+Peta:wght@300;400;500;600&family=Lexend+Tera:wght@100;200;300;400&family=Lexend+Zetta:wght@100;200;300;400;500;600;700&family=Lora:wght@100;200;300;400;500&display=swap"
     rel="stylesheet">
   <script src="https://kit.fontawesome.com/f5e40114d0.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="bk-green">
   <div class="container">
     <div class="modal hidden">
       <div class="modal-overlay pos-abs-modal">
       </div>
     </div>
-    <div class="z2 search-box">
+    <div class="search-element search-box">
       <input class="search" type="text" name="search" placeholder="search by stock symbol">
       <i class="fa-solid fa-magnifying-glass"></i>
     </div>
-    <div class="home" data-view="home">
+    <div class="modal-folder hidden">
+      <div class="modal-overlay pos-abs-modal modal-folder-blur">
+      </div>
+      <div class="recent-folder">
+        <div class="recent-search">
+          <p class="recent-search-text">Recent Searches</p>
+        </div>
+        <ul id="recent-search-folder">
+        </ul>
+      </div>
+    </div>
+    <div id="home" class="view" data-view="home">
       <p class="font-lexenddecca text-center motto">The simplest way to view your stocks</p>
       <h1 class="font-lexendzetta text-center logo">fin<span class="font-lexendzetta blue-txt v-logo">V</span>iew</h1>
     </div>
+    <div id="quote" class="view hidden" data-view="quote">
+      <div class="row">
+        <div class="quote-container">
+          <div class="row justify-center folder">
+            <i class="fa-solid fa-folder-open"></i>
+          </div>
+          <div class="row pt-3r">
+            <div class="col-2 mlr-1r-p5r">
+              <div class="screen-row">
+                <div class="screen-col-2">
+                  <p class="text-center font-lexendpeta head-title">Close</p>
+                  <p id="close" class="text-center font-lexendtera head-number">####</p>
+                </div>
+                <div class="screen-col-2">
+                  <div class="row close-color txt-red head-change screen-inline">
+                    <div class="col-2 screen-col">
+                      <p id="change" class="text-center font-lexendtera screen-change">####</p>
+                    </div>
+                    <div class="col-2 screen-col">
+                      <p id="percent-change" class="text-center font-lexendtera screen-change">#####</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-2 mlr-p5r-1">
+              <div class="screen-row">
+                <div class="screen-col-2">
+                  <p class="text-center font-lexendpeta head-title">After Hours</p>
+                  <p id="extended-price" class="text-center font-lexendtera head-number">#####</p>
+                </div>
+                <div class="screen-col-2">
+                  <div class="row after-color txt-green head-change screen-inline">
+                    <div class="col-2 screen-col">
+                      <p id="extended-change" class="text-center font-lexendtera screen-change">####</p>
+                    </div>
+                    <div class="col-2 screen-col">
+                      <p id="extended-percent" class="text-center font-lexendtera screen-change">#####</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="font-lexendtera title pt">SYM (Co. Name)</p>
+          <div class="row graph-row z0">
+            <div class="graph justify-center">
+              <img class="graph-placeholder justify-center" src="https://quickchart.io/chart?c={type:'bar',data:{labels:[2012,2013,2014,2015,2016],datasets:[{label:'Users',data:[120,60,50,180,120]}]}}" alt="graph">
+              <p class="graph-title">1 Day Interval</p>
+            </div>
+          </div>
+          <div class="row font-white font-lora justify-center mtb-1r range">
+            <p class="mr-2r">Range&colon;</p>
+            <p id="range" class="bold">#####</p>
+          </div>
+          <div class="row wrap quote-data-box font-lora">
+            <div class="col-2 quote-data">
+              <div class="row space-between">
+                <p>Open:</p>
+                <p id="open" class="bold align-center">###</p>
+              </div>
+            </div>
+            <div class="col-2 quote-data">
+              <div class="row space-between">
+                <p>Close:</p>
+                <p id="closeList" class="bold align-center">#####</p>
+              </div>
+            </div>
+            <div class="col-2 quote-data">
+              <div class="row space-between">
+                <p>Low:</p>
+                <p id="low" class="bold align-center">#####</p>
+              </div>
+            </div>
+            <div class="col-2 quote-data">
+              <div class="row space-between">
+                <p>High:</p>
+                <p id="high" class="bold align-center">####</p>
+              </div>
+            </div>
+            <div class="col-2 quote-data">
+              <div class="row space-between">
+                <p class="align-center">Volume:</p>
+                <p id="volume" class="bold align-center">######</p>
+              </div>
+            </div>
+            <div class="col-2 quote-data">
+              <div class="row space-between">
+                <p>Avg Volume:</p>
+                <p id="avg-volume" class="bold align-center">######</p>
+              </div>
+            </div>
+          </div>
+          <p class="font-lora text-center font-white text-underline mtb-2r range">52 Week Comparison</p>
+          <div class="row font-white font-lora justify-center mtb-2r range">
+            <p class="mr-2r">Range&colon;</p>
+            <p id="year-range" class="bold">#####</p>
+          </div>
+          <div class="row wrap quote-data-box font-lora pb-2r">
+            <div class="col-2 quote-data">
+              <div class="row space-between">
+                <p>Low:</p>
+                <p id="year-low" class="bold align-center">#####</p>
+              </div>
+            </div>
+            <div class="col-2 quote-data">
+              <div class="row space-between">
+                <p>High:</p>
+                <p id="year-high" class="bold align-center">#####</p>
+              </div>
+            </div>
+            <div class="col-2 quote-data">
+              <div class="row space-between">
+                <p>Low Change:</p>
+                <p id="year-low-change" class="bold align-center">#####</p>
+              </div>
+            </div>
+            <div class="col-2 quote-data">
+              <div class="row space-between">
+                <p>High Change:</p>
+                <p id="year-high-change" class="bold align-center">########</p>
+              </div>
+            </div>
+            <div class="col-2 quote-data">
+              <div class="row space-between">
+                <p class="align-center">&percnt; Low Change&colon;</p>
+                <p id="year-perc-low-change" class="bold align-center">#####</p>
+              </div>
+            </div>
+            <div class="col-2 quote-data">
+              <div class="row space-between">
+                <p>&percnt; High Change&colon;</p>
+                <p id="year-perc-high-change" class="bold align-center">#####</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quote-container-screen">
+          <div class="recent-search">
+            <p class="recent-search-text">Recent Searches</p>
+          </div>
+          <ul id="recent-search">
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
-  <script src="lodash.js"></script>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
