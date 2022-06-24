@@ -1,4 +1,5 @@
 var apikey = '1113234349f9424cb830c124095055c8';
+var $body = document.querySelector('body');
 var $modal = document.querySelector('.modal');
 var $search = document.querySelector('.search');
 var $searchElement = document.querySelector('.search-element');
@@ -148,6 +149,7 @@ function viewCheck() {
     }
     if (viewDataView !== 'home') {
       $searchElement.setAttribute('class', 'search-box-quote');
+      $body.setAttribute('class', 'bk-bluegreen');
     }
   }
 }
