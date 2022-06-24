@@ -10,10 +10,21 @@ var dateYear = fullDate.getFullYear();
 var dateMonth = fullDate.getMonth() + 1;
 data.currentDate = dateYear + '-' + dateMonth + '-' + dateDay;
 
+var $folder = document.querySelector('.fa-folder-open');
+var $modalFolderBlur = document.querySelector('.modal-folder-blur');
+var $modalFolder = document.querySelector('.modal-folder');
+$folder.addEventListener('click', function displayBookmarks() {
+  $modalFolder.setAttribute('class', 'modal-folder');
+});
+
+$modalFolderBlur.addEventListener('click', function exitModal() {
+  $modalFolder.setAttribute('class', 'modal-folder hidden');
+});
+
 function searchAction() {
   data.currentSearch = {};
   if ($search.value === '') {
-    $modal.setAttribute('class', 'modal hidden');
+    $modal.setAttribute('class', 'modal pos-abs-modal hidden');
     $search.blur();
     return;
   }
@@ -23,7 +34,7 @@ function searchAction() {
   displayRecentSearch();
   data.view = 'quote';
   viewCheck();
-  $modal.setAttribute('class', 'modal hidden');
+  $modal.setAttribute('class', 'modal pos-abs-modal hidden');
   $search.value = '';
 }
 

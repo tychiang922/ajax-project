@@ -21,9 +21,40 @@ href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;
       <div class="modal-overlay pos-abs-modal">
       </div>
     </div>
-    <div class="z2 search-element search-box-quote">
+    <div class="search-element search-box-quote pos-rel">
       <input class="search" type="text" name="search" placeholder="search by stock symbol">
       <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+    <div class="modal-folder hidden">
+      <div class="modal-overlay pos-abs-modal modal-folder-blur">
+      </div>
+      <div class="recent-folder">
+        <div class="recent-search">
+          <p class="recent-search-text">Recent Searches</p>
+        </div>
+        <ul id="recent-search-folder">
+          <li class="recent-search-li">
+            <div class="row">
+              <div class="col-2">
+                <p class="text-center">AAPL</p>
+              </div>
+              <div class="col-2">
+                <p class="text-center txt-red">137.13</p>
+              </div>
+            </div>
+          </li>
+          <li class="recent-search-li">
+            <div class="row">
+              <div class="col-2">
+                <p class="text-center">TSLA</p>
+              </div>
+              <div class="col-2">
+                <p class="text-center txt-red">137.13</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
     <div id="home" class="view hidden" data-view="home">
       <p class="font-lexenddecca text-center motto">The simplest way to view your stocks</p>
@@ -196,7 +227,6 @@ href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;
       </div>
     </div>
   </div>
-  <script src="lodash.js"></script>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
