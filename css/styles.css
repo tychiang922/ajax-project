@@ -124,6 +124,7 @@
 }
 
 .search-box-quote {
+  position: relative;
   top: 2rem;
   width: 20rem;
   margin: auto;
@@ -161,8 +162,6 @@ input {
 
 .pos-abs-modal {
   position: fixed;
-  width: 100%;
-  height: 100%;
   top: 0;
   bottom: 0;
   left: 0;
