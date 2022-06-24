@@ -30,7 +30,7 @@ function searchAction() {
     return;
   }
   xhrQuoteRequest();
-  xhrAfterHourRequest();
+  // xhrAfterHourRequest();
   xhrStockTime();
   displayRecentSearch();
   data.view = 'quote';
@@ -89,26 +89,26 @@ function xhrQuoteRequest() {
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://api.twelvedata.com/quote?symbol=' + $search.value + '&apikey=' + apikey);
   xhr.responseType = 'json';
+  var xhrAfter = new XMLHttpRequest();
+  xhrAfter.open('GET', 'https://api.twelvedata.com/price?symbol=' + $search.value + '&apikey=' + apikey);
+  xhrAfter.responseType = 'json';
   xhr.addEventListener('load', function () {
     for (var key in xhr.response) {
       data.currentSearch[key] = xhr.response[key];
     }
+    xhrAfter.addEventListener('load', function () {
+      data.currentSearch.afterHour = Number(xhrAfter.response.price).toFixed(2);
+      quoteAfterCreation();
+    });
+    xhrAfter.send();
     quoteCreation();
     data.lastFiveSearch.unshift(data.currentSearch);
   });
   xhr.send();
 }
 
-function xhrAfterHourRequest() {
-  var xhrAfter = new XMLHttpRequest();
-  xhrAfter.open('GET', 'https://api.twelvedata.com/price?symbol=' + $search.value + '&apikey=' + apikey);
-  xhrAfter.responseType = 'json';
-  xhrAfter.addEventListener('load', function () {
-    data.currentSearch.afterHour = Number(xhrAfter.response.price).toFixed(2);
-    quoteAfterCreation();
-  });
-  xhrAfter.send();
-}
+// function xhrAfterHourRequest() {
+// }
 
 function xhrStockTime() {
   var xhrStockTime = new XMLHttpRequest();
@@ -212,10 +212,16 @@ function quoteCreation() {
   $yearHighChange.textContent = numberToFixedTwo(data.currentSearch.fifty_two_week.high_change);
   $yearPercLowChange.textContent = numberToFixedTwo(data.currentSearch.fifty_two_week.low_change_percent);
   $yearPercHighChange.textContent = numberToFixedTwo(data.currentSearch.fifty_two_week.high_change_percent);
+
+}
+
+function quoteAfterCreation() {
+  var $extendedPrice = document.querySelector('#extended-price');
+  $extendedPrice.textContent = data.currentSearch.afterHour;
   var $extendedChange = document.querySelector('#extended-change');
   var $extendedPercent = document.querySelector('#extended-percent');
-  var extendedChange = (data.currentSearch.afterHour - closeNumber).toFixed(2);
-  var extendedPercent = ((extendedChange / closeNumber) * 100).toFixed(2);
+  var extendedChange = (data.currentSearch.afterHour - Number(data.currentSearch.close)).toFixed(2);
+  var extendedPercent = ((extendedChange / Number(data.currentSearch.close)) * 100).toFixed(2);
   var $afterColor = document.querySelector('.after-color');
   if (extendedChange > 0) {
     $extendedChange.textContent = '+' + extendedChange;
@@ -226,9 +232,4 @@ function quoteCreation() {
     $extendedPercent.textContent = '(' + extendedPercent + '%' + ')';
     $afterColor.setAttribute('class', 'row after-color txt-red head-change screen-inline');
   }
-}
-
-function quoteAfterCreation() {
-  var $extendedPrice = document.querySelector('#extended-price');
-  $extendedPrice.textContent = data.currentSearch.afterHour;
 }
